@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>TypeScript</section>
+				<section>
+					<section>History</section>
+					<section>
+						Author: Anders Hejlsberg (Microsoft);<br>
+						Appeared on: 01.10.2012.<br>
+					</section>
+				</section>
+				<section>
+					<section>
+						Differences
+					<!-- JavaScript <span class="versus">vs</span> TypeScript -->	
+					</section>
+					<section>
+						<table class="comparison">
+							<tr>
+								<td>JavaScript</td>
+								<td class="versus">VS</td>
+								<td>TypeScript</td>
+							</tr>
+							<tr class="comparison--style">
+								<td>.js</td>
+								<td></td>
+								<td>.ts, .tsx</td>
+							</tr>
+							<tr class="comparison--style fragment">
+								<td>dynamic</td>
+								<td></td>
+								<td>static</td>
+							</tr>
+							<tr class="comparison--style fragment">
+								<td>interpreted</td>
+								<td></td>
+								<td>compiled</td>
+							</tr>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>Benefits</section>
+					<section>
+						<table class="benefits">
+							<tr>
+								<td>JavaScript</td>
+								<td class="versus">VS</td>
+								<td>TypeScript</td>
+							</tr>
+							<tr class="comparison--style">
+								<td class="fragment">
+									<ul>
+										<li>Static typing</li>
+										<li>Better choice for large coding projects</li>
+										<li>Better for collaboration</li>
+										<li>Better productivity</li>
+									</ul>
+								</td>
+								<td></td>
+								<td class="fragment">
+									<ul>
+										<li>Popular</li>
+										<li>Support native browsers</li>
+										<li>Raw JS</li>
+										<li>More flexibility</li>
+									</ul>
+								</td>
+							</tr>							
+						</table>
+					</section>
+				</section>
+				<section class="using">
+					<section>
+						How to use
+					</section>
+					<section>
+						<div><span class="step">Step 1: </span>install Node.js</div>
+						<div class="fragment"><span class="step">Step 2: </span>install TypeScript
+							<pre><code>> npm install -g typescript</code></pre>
+						</div>
+						<div class="fragment"><span class="step">Step 3: </span>building your TypeScript file
+							<pre>
+								<code>function greeter(person) {
+  return "Hello, " + person;
+}
+							
+let user = "Jane User";
+							
+document.body.textContent = greeter(user);</code></pre>
+						</div>
+						<div class="fragment"><span class="step">Step 4: </span>compiling your code
+							<pre><code>> tsc "file_name".ts</code></pre>
+						</div>
+					</section>
+				</section>
+				<section class="types">
+					<section>Types</section>
+					<section>
+						<p>Basic types:</p>
+						<ul>
+							<li>boolean;</li>
+							<li>number;</li>
+							<li>string;</li>
+							<li>array;</li>
+							<li>tuple;</li>
+							<li>enum;</li>
+							<li>any;</li>
+							<li>void;</li>
+							<li>null and undefined;</li>
+							<li>never;</li>
+							<li>object.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<div>Boolean</div>
+					<pre><code>let isDone: boolean = false;</code></pre>
+				</section>
+				<section>
+					<div>Number</div>
+					<pre><code>let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;</code></pre></section>
+				<section>
+					<section>
+						<div>String</div>
+						<pre><code>let color: string = "blue";
+color = 'red';</code></pre>
+					</section>
+					<section>
+						<div>String</div>
+						<pre><code>let fullName: string = `Bob Bobbington`;
+let age: number = 37;
+let sentence: string = `Hello, my name is ${fullName}.
+I'll be ${age + 1} years old next month.`;</code></pre>
+					</section>
+				</section>
+				<section><div>Array</div>
+					<pre><code>let list: number[] = [1, 2, 3];
+let list: Array&#60;number&#62; = [1, 2, 3];</code></pre>
+				</section>
+				<section><div>Tuple</div>
+					<pre><code>let x: [string, number];
+x = ["hello", 10]; // OK
+x = [10, "hello"]; // Error
+
+console.log(x[0].substring(1)); // "OK"
+console.log(x[1].substring(1)); // "Error, 'number' does not have 'substring'""
+x[3] = "world"; // Error, Property '3' does not exist on type '[string, number]'.</code></pre>
+				</section>
+				<section>
+					<section>
+						<div>Enum</div>
+						<pre><code>enum Color {Red, Green, Blue};
+let c: Color = Color.Green;
+
+enum Color {Red = 1, Green, Blue};
+let c: Color = Color.Green;		
+
+enum Color {Red = 1, Green = 2, Blue = 4};
+let c: Color = Color.Green;</code></pre>
+					</section>
+					<section>
+						<div>Enum</div>
+						<pre><code>enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2];
+console.log(colorName); // "Displays 'Green' as its value is 2 above"</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<div>Any</div>
+						<pre><code>let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // "okay, definitely a boolean"</code></pre>
+					</section>
+					<section>
+						<div>Features</div>
+						<pre><code>let notSure: any = 4;
+notSure.ifItExists(); // "okay, ifItExists might exist at runtime"
+notSure.toFixed(); // "okay, toFixed exists (but the compiler doesn't check)""
+
+let prettySure: Object = 4;
+prettySure.toFixed(); // "Error: Property 'toFixed' doesn't exist on type 'Object'""
+						</code></pre>
+					</section>
+					<section>
+						<div>Array any</div>
+						<pre><code>let list: any[] = [1, true, "free"];
+list[1] = 100;</code></pre>
+					</section>
+				</section>
+				<section>
+					<div>Void</div>
+					<pre><code>function warnUser(): void {
+  console.log("This is my warning message");
+}
+
+let unusable: void = undefined;
+unusable = null; // "OK if `--strictNullChecks` is not given"</code></pre>
+				</section>
+				<section>
+					<div>Null and undefined</div>
+					<pre><code>let u: undefined = undefined;
+let n: null = null;</code></pre>
+				</section>
+				<section>
+					<div>Never</div>
+					<pre><code>function error(message: string): never {
+  throw new Error(message);
+}
+
+function fail() {
+  return error("Something failed");
+}
+
+function infiniteLoop(): never {
+  while (true) {
+  }
+}</code></pre>
+				</section>
+				<section>
+					<div>Object</div>
+					<pre><code>declare function create(o: object | null): void;
+
+create({ prop: 0 }); // OK
+create(null); // OK
+
+create(42); // Error
+create("string"); // Error
+create(false); // Error
+create(undefined); // Error</code></pre>
+				</section>
+				<section class="thanks">THANKS</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
