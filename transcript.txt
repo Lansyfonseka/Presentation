@@ -1,0 +1,68 @@
+Hello everyone, today we are talking about TS, what is it, for what and how it use.
+TypeScript
+TypeScript is an open-source programming language. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language.
+History
+Now we some talk about history
+TS was presented on 01.10. 2012.
+Author of the typescript is Anders Hejlsberg. He also creator such languages as C#, Delphi and Turbo Pascal.
+Differences
+On the next slide we see some differences between JS and TS
+First and simple difference is filename extensions. Js have .js and TS have .ts.
+Second difference is typing. Dynamic in js vs static in TS. Well it's simple, in JS you can use one variable for some different types. In TS cant, only determined type.
+As you know, JS is interpreted programming language. But, TS is compiled programming language and compiled in JS
+Benefits
+JS: It has huge active community of developers which make it more popular language. It support native browsers. Whereas for TypeScript will first compiled and convert to js. Which is creating one extra step.  With raw js the lines of code is more so it difficult to maintain and make it error free when the code size increases than its counterpart(контепат). More  flexibility
+TS: Static typing.  Better choice for large coding projects. Better for collaboration. When large coding projects have many developers. In that time there is a chance for messier coding. And number of errors increases which makes the handling difficult. So type safety has feature to detect errors during(дюрин) coding time. Which makes more efficient code and also we can debug it easily. Better productivity. ECMA script 6 code, dynamic typing, auto-completion are helps developer’s boost their productivity.
+How to use
+First you should to install Node.js. Next step is install TypeScript with global(-g) flag. After that you create file with extensions .ts and build your project. Final you compile your project simple command. Well done, you using TypeScript
+Types
+Now we talk about types in typeScript. Don't be scared, it's easy than seems. There are basic types such as boolean, number, string, array, tuple, enum, any, void, null and undefined, never and object. Now we will acquaint with each of them. Let's start
+Boolean
+The most basic datatype is the simple true/false value, which JavaScript and TypeScript call a boolean value.
+Number
+As in JavaScript, all numbers in TypeScript are floating point values. TypeScript supports decimal, hexadecimal, octal and binary literals.
+String
+Just like JavaScript, TypeScript also uses double quotes (") or single quotes (') to surround string data. These strings are surrounded by the backtick (`) character, and embedded expressions are of the form ${ expr }.
+Array
+Array types can be written in one of two ways. In the first, you use the type of the elements followed by [] to denote an array of that element type. The second way uses a generic array type, Array<elemType>.
+Tuple
+Tuple types allow you to express an array with a fixed number of elements whose types are known, but need not be the same. For example, you may want to represent a value as a pair of a string and a number. When accessing an element with a known index, the correct type is retrieved. Accessing an element outside the set of known indices fails with an error.
+Enum
+A helpful addition to the standard set of datatypes from JavaScript is the enum. As in languages like C#, an enum is a way of giving more friendly names to sets of numeric values. By default, enums begin numbering their members starting at 0. You can change this by manually setting the value of one of its members. For example, we can start the previous example at 1 instead of 0. Or, even manually set all the values in the enum. 
+Enums are real objects that exist at runtime. In this generated code, an enum is compiled into an object that stores both forward (name -> value) and reverse (value -> name) mappings. 
+Any
+Type any completely describes yourself. You can use every type data in variable. The any type is a powerful way to work with existing JavaScript, allowing you to gradually opt-in and opt-out of type checking during compilation. You might expect Object to play a similar role, as it does in other languages. However, variables of type Object only allow you to assign any value to them. You can’t call arbitrary methods on them, even ones that actually exist.
+The any type is also handy if you know some part of the type, but perhaps not all of it. For example, you may have an array but the array has a mix of different types.
+I don't recommend use this type, because meaning of Typescript lose. Also type any can expand in your code such as infection.
+Void
+void is a little like the opposite of any: the absence of having any type at all. You may commonly see this as the return type of functions that do not return a value.
+Declaring variables of type void is not useful because you can only assign null (only if --strictNullChecks is not specified) or undefined to them.
+Null and undefined
+In TypeScript, both undefined and null actually have their own types named undefined and null respectively. It’s simple.
+Never
+The never type represents the type of values that never occur. For instance, never is the return type for a function expression or an arrow function expression that always throws an exception or one that never returns; Variables also acquire the type never when narrowed by any type guards that can never be true.
+Some examples of functions returning never.
+Object
+Object is a type that represents the non-primitive type, i.e. anything that is not number, string, boolean, bigint, symbol, null, or undefined.
+With object type, APIs like Object.create can be better represented. For example.
+Generics
+The identity function is a function that will return back whatever is passed in. Without generics, we would either have to give the identity function a specific type. Or, we could describe the identity function using the any type.
+While using any is certainly generic in that it will cause the function to accept any and all types for the type of arg, we actually are losing the information about what that type was when the function returns. If we passed in a number, the only information we have is that any type could be returned.
+Instead, we need a way of capturing the type of the argument in such a way that we can also use it to denote what is being returned. Here, we will use a type variable, a special kind of variable that works on types rather than values.
+Once we’ve written the generic identity function, we can call it in one of two ways. The first way is to pass all of the arguments, including the type argument, to the function
+Notice that we didn’t have to explicitly pass the type in the angle brackets (<>); the compiler just looked at the value "myString", and set T to its type. 
+Interface
+The easiest way to see how interfaces work is to start with a simple example. The printLabel function has a single parameter that requires that the object passed in has a property called label of type string.
+The interface LabeledValue is a name we can now use to describe the requirement in the previous example. It still represents having a single property called label that is of type string. Notice we didn’t have to explicitly say that the object we pass to printLabel implements this interface like we might have to in other languages. Here, it’s only the shape that matters. If the object we pass to the function meets the requirements listed, then it’s allowed. It’s worth pointing out that the type checker does not require that these properties come in any sort of order, only that the properties the interface requires are present and have the required type.
+Discriminated Unions 
+You can combine singleton types, union types, type guards, and type aliases to build an advanced pattern called discriminated unions, also known as tagged unions or algebraic data types. Discriminated unions are useful in functional programming. Some languages automatically discriminate unions for you; TypeScript instead builds on JavaScript patterns as they exist today. There are three ingredients:
+1. Types that have a common, singleton type property — the discriminant.
+2. A type alias that takes the union of those types — the union.
+3. Type guards on the common property.
+First we declare the interfaces we will union. Each interface has a kind property with a different string literal type. The kind property is called the discriminant or tag. The other properties are specific to each interface. Notice that the interfaces are currently unrelated. Let’s put them into a union:
+Now let’s use the discriminated union:
+We talk about what is it, how use, talk about basic types and some features in TS.
+It is some links which are I use for this presentation
+Thank you for attention 
+
+
