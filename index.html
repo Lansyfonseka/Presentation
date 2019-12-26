@@ -48,7 +48,7 @@
 							<tr class="comparison--style">
 								<td>.js</td>
 								<td></td>
-								<td>.ts, .tsx</td>
+								<td>.ts</td>
 							</tr>
 							<tr class="comparison--style fragment">
 								<td>dynamic</td>
@@ -192,6 +192,15 @@ let c: Color = Color.Green;</code></pre>
 let colorName: string = Color[2];
 console.log(colorName); // "Displays 'Green' as its value is 2 above"</code></pre>
 					</section>
+					<section>
+						<div>Enum at runtime</div>
+						<pre><code>enum Enum {
+  A
+}
+
+let a = Enum.A; // "0"
+let nameOfA = Enum[a]; // "A"</code></pre>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -257,7 +266,93 @@ create("string"); // Error
 create(false); // Error
 create(undefined); // Error</code></pre>
 				</section>
-				<section class="thanks">THANKS</section>
+				<section>
+					<section>
+						<div>Generics</div>
+						<pre><code>function identity(arg: number): number {
+  return arg;
+}
+
+function identity(arg: any): any {
+  return arg;
+}</code></pre>
+					</section>
+					<section>
+						<div>Generics</div>
+						<pre><code>function identity&#60;T&#62;(arg: T): T {
+  return arg;
+}
+
+let output = identity&#60;string&#62;("myString");
+let output = identity("myString");</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<div>Interface</div>
+						<pre><code>function printLabel(labeledObj: { label: string }) {
+  console.log(labeledObj.label);
+}
+
+let myObj = {size: 10, label: "Size 10 Object"};
+printLabel(myObj);</code></pre>
+					</section>
+					<section>
+						<div>Interface</div>
+						<pre><code>interface LabeledValue {
+  label: string;
+}
+
+function printLabel(labeledObj: LabeledValue) {
+  console.log(labeledObj.label);
+}
+
+let myObj = {size: 10, label: "Size 10 Object"};
+printLabel(myObj);</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+
+						<div>Discriminated unions</div>
+					</section>
+					<section>
+						<div>Example</div>
+						<pre><code>interface Square {
+  kind: "square";
+  size: number;
+}
+interface Rectangle {
+  kind: "rectangle";
+  width: number;
+  height: number;
+}
+interface Circle {
+  kind: "circle";
+  radius: number;
+}</code></pre>
+					</section>
+					<section>
+						<div>Example</div>
+						<pre><code>type Shape = Square | Rectangle | Circle;
+
+function area(s: Shape) {
+  switch (s.kind) {
+    case "square": return s.size * s.size;
+    case "rectangle": return s.height * s.width;
+    case "circle": return Math.PI * s.radius ** 2;
+  }
+}</code></pre>
+					</section>
+				</section>
+				<section>
+					<div class="thanks">THANKS</div>
+					<ul>
+						<li>https://www.typescriptlang.org/docs/home.html</li>
+						<li>https://www.educba.com/typescript-vs-javascript/</li>
+						<li>https://github.com/microsoft/TypeScript</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
